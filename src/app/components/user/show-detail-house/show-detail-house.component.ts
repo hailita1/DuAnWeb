@@ -11,7 +11,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./show-detail-house.component.scss']
 })
 export class ShowDetailHouseComponent implements OnInit {
-
   listHouse: any;
   id: number;
   formGroup = new FormGroup({

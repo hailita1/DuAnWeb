@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {IHouse} from '../interface/house';
 import {IHost} from '../interface/host';
 import {ICustomer} from '../interface/customer';
+import {IDeal} from '../interface/deal';
 
 @Injectable()
 export class ComponentsService {
@@ -98,6 +99,14 @@ export class ComponentsService {
       checkLogin
     };
     return this.httpClient.put('http://localhost:5000/api/checks/' + id, check);
+  }
+
+
+  public addRating(deal: IDeal): Observable<any> {
+    return this.httpClient.post('http://localhost:5000/api/deals/', deal);
+  }
+  public listRating(): Observable<any> {
+    return this.httpClient.get('http://localhost:5000/api/hosts/');
   }
 }
 

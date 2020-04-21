@@ -54,6 +54,7 @@ export class MenuBarComponent implements OnInit {
     console.log(this.checkLogin);
     localStorage.removeItem('check');
     localStorage.removeItem('customerName');
+    localStorage.removeItem('customerId');
   }
   public searchByDiaChi() {
     const diaChi = this.formGroup.get('search').value;

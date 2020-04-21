@@ -18,7 +18,7 @@ export class LoginHomepageComponent implements OnInit {
   checkLogin: any;
   afterCheck: any;
   listCustomer: any[];
-  customerId: any;
+  customerId: string;
   message = '';
   isShow = false;
   isSuccess = true;
@@ -48,6 +48,8 @@ export class LoginHomepageComponent implements OnInit {
       if (this.listCustomer[i].userName === userName && this.listCustomer[i].password === password) {
         this.customerId = this.listCustomer[i].idCustomer;
         this.customerName = this.listCustomer[i].ten;
+        localStorage.setItem('customerId', this.customerId);
+        console.log(this.customerId);
         localStorage.setItem('customerName', this.customerName);
         this.route.navigate(['/home/']).then( (e) => {
           if (e) {

@@ -26,13 +26,16 @@ import { ShowDetailUserComponent } from './user/show-detail-user/show-detail-use
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { LoginHomepageComponent } from './homepage/login-homepage/login-homepage.component';
 import { SignupHomepageComponent } from './homepage/signup-homepage/signup-homepage.component';
+import { RatingComponent } from './user/rating/rating.component';
+import { ShowDetailRatingComponent } from './user/show-detail-rating/show-detail-rating.component';
+
 
 
 
 @NgModule({
   declarations: [
     // tslint:disable-next-line:max-line-length
-    ComponentsComponent, BodyNewsComponent, HomepageComponent, FooterComponent, HotNewsComponent, MenuBarComponent, SideBarComponent, UserComponent, HouseListComponent, AddHouseComponent, EditHouseComponent, ShowDetailsComponent, SideBarUserComponent, HomeListComponent, ShowDetailHouseComponent, LoginComponent, SignUpComponent, ShowDetailUserComponent, EditUserComponent, LoginHomepageComponent, SignupHomepageComponent],
+    ComponentsComponent, BodyNewsComponent, HomepageComponent, FooterComponent, HotNewsComponent, MenuBarComponent, SideBarComponent, UserComponent, HouseListComponent, AddHouseComponent, EditHouseComponent, ShowDetailsComponent, SideBarUserComponent, HomeListComponent, ShowDetailHouseComponent, LoginComponent, SignUpComponent, ShowDetailUserComponent, EditUserComponent, LoginHomepageComponent, SignupHomepageComponent, RatingComponent, ShowDetailRatingComponent],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
