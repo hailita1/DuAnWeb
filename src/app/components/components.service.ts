@@ -62,42 +62,57 @@ export class ComponentsService {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.get<any>('http://localhost:5000//api/findAllByGiaTienTheoDemBetweenAndTrangThai?dauDuoi=' + input + '&dauTren=' + output);
   }
+
   public listUser(): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/hosts/');
   }
+
   public addUser(host: IHost): Observable<any> {
     return this.httpClient.post('http://localhost:5000/api/hosts/', host);
   }
+
   public findByIdChuNha(id: string): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/findAllByHost?host=' + id);
   }
+
   public findByIdHost(id: string): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/hosts/' + id);
   }
+
   public editUser(host: IHost): Observable<any> {
     return this.httpClient.put<any>('http://localhost:5000/api/hosts/' + host.idChuNha, host);
   }
+
   public addCustomer(customer: ICustomer): Observable<any> {
     return this.httpClient.post('http://localhost:5000/api/customers/', customer);
   }
+
   public editCustomer(customer: ICustomer): Observable<any> {
     return this.httpClient.post('http://localhost:5000/api/customers/' + customer.idCustomer, customer);
   }
+
   public getListCustomer(): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/customers/');
   }
+
   public getCheck(): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/checks/');
   }
+
   public findByIdCheck(id: number): Observable<any> {
     return this.httpClient.get('http://localhost:5000/api/checks/' + id);
   }
+
   public updateCheck(id: number, checkLogin: boolean): Observable<any> {
     const check = {
       id,
       checkLogin
     };
     return this.httpClient.put('http://localhost:5000/api/checks/' + id, check);
+  }
+
+  public findByIdImage(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:5000/api/findAllByHouse?house=' + id);
   }
 }
 
