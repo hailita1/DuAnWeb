@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IDeal} from '../../../interface/deal';
 import {ComponentsService} from '../../components.service';
 import {ActivatedRoute} from '@angular/router';
@@ -30,7 +30,10 @@ export class RatingComponent implements OnInit {
   isLoading = false;
   formGroup = new FormGroup({
     danhGia: new FormControl(),
-    phanHoi: new FormControl(),
+    phanHoi: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(222),
+    ]),
   });
   constructor(private componentsService: ComponentsService , private route: ActivatedRoute ) { }
   ngOnInit(): void {
@@ -63,5 +66,8 @@ export class RatingComponent implements OnInit {
       this.isLoading = false;
       this.formGroup.reset();
     });
+  }
+  onSubmit() {
+    alert(JSON.stringify(this.formGroup.value));
   }
 }

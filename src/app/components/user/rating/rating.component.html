@@ -10,7 +10,11 @@
   </fieldset>
   <div class="form-group">
     <label for="exampleFormControlTextarea1"></label>
-    <textarea formControlName="phanHoi" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+    <input type="text" formControlName="phanHoi" class="form-control" id="exampleFormControlTextarea1"  [ngClass]="{'is-invalid':formGroup.get('danhGia').touched && formGroup.get('danhGia').invalid}" required="" />
+    <div class="invalid-feedback">
+      <div *ngIf="formGroup.get('danhGia').errors.maxlength">Tối đa 222 kí tự</div>
+      <div *ngIf="formGroup.get('danhGia').errors.required">Tổi thiểu 10 kí tự</div>
+    </div>
   </div>
   <button type="submit">Đánh giá</button>
   <div *ngIf="isShow"
