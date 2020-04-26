@@ -20,6 +20,7 @@ export class EditHouseComponent implements OnInit {
   picture: Picture[];
   listUser: any[];
   arrayPicture: Picture[] = [];
+  arrayPicture1: Picture[] = [];
   categoryHouseList: any[];
   categoryRoomList: any[];
   message = '';
@@ -75,15 +76,15 @@ export class EditHouseComponent implements OnInit {
       diaChi: new FormControl(),
       sdt: new FormControl()
     }),
-    picture: new FormArray([
-    ])
+    picture: new FormArray([])
   });
+
   get pictureList(): FormArray {
     return this.formGroup.get('picture') as FormArray;
   }
 
   addPicture() {
-    this.pictureList.push(new FormGroup ({
+    this.pictureList.push(new FormGroup({
       idAnh: new FormControl(),
       tenAnh: new FormControl(),
     }));
@@ -106,6 +107,7 @@ export class EditHouseComponent implements OnInit {
     this.componentsService.listCategoryRoom().subscribe(result1 => {
       this.categoryRoomList = result1;
     });
+    this.getImage();
     this.route.paramMap.subscribe(params => {
       const idSearch = params.get('id');
       this.componentsService.findById(idSearch).subscribe(houses => {
@@ -140,12 +142,15 @@ export class EditHouseComponent implements OnInit {
     this.house.trangThai = this.formGroup.get('trangThai').value;
     // this.house.host =  this.formGroup.get('host').value;
     this.house.categoryHouse = this.formGroup.get('categoryHouse').value;
-    this.house.categoryRoom =  this.formGroup.get('categoryRoom').value;
+    this.house.categoryRoom = this.formGroup.get('categoryRoom').value;
     this.house.picture = this.arrayPicture;
     this.componentsService.editHouse(this.house).subscribe(result => {
       this.isShow = true;
       this.isSuccess = true;
       this.message = 'Sửa thành công!';
+      // this.arrayPicture = [];
+      this.getImage();
+      console.log(this.arrayPicture);
       this.formGroup.reset();
     }, error => {
       this.isShow = true;
@@ -206,18 +211,23 @@ export class EditHouseComponent implements OnInit {
 
   pushDeleteImage(index: number) {
     let picture1: Picture[];
-    picture1 = this.house.picture.splice(index, 1);
+    picture1 = this.arrayPicture1.splice(index, 1);
     for (let i = 0; i < picture1.length; i++) {
       this.arrayPicture.push(picture1[i]);
     }
     console.log(this.arrayPicture);
   }
+
   onClick() {
     myTest();
   }
+
+  getImage() {
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+      this.componentsService.findByIdImage(id).subscribe(result2 => {
+        this.arrayPicture1 = result2;
+      });
+    });
+  }
 }
-
-
-
-
-
